@@ -1,5 +1,6 @@
 import com.sun.net.httpserver.HttpServer;
 import rest.AddRecordHandler;
+import rest.StaticFilesHandler;
 
 import java.net.InetSocketAddress;
 
@@ -15,6 +16,12 @@ public class RunServer {
 
         server.createContext("/add-record", new AddRecordHandler());
 
+        server.createContext("/view", new StaticFilesHandler("D:\\projects\\JavaProjects\\AddRecApp\\src\\main\\resources"));
+
+        server.setExecutor(null);
+        server.start();
+
+        System.out.println("Server has been started");
     }
 
 }
